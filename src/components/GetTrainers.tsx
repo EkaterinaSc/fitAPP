@@ -2,6 +2,7 @@ import {useState, useEffect} from "react";
 import {AllTrainers} from './AllTrainers.tsx'
 import {IFilter, SearchTrainer} from "./SearchTrainer.tsx";
 import {ITrainer} from './AllTrainers.tsx';
+import './trainers_list.scss';
 
 export const GetTrainers = () => {
     const [trainers, setTrainers] = useState<ITrainer[]>([]);
@@ -10,6 +11,7 @@ export const GetTrainers = () => {
             isActive: false,
             forMan: false,
             forWoman: false,
+            showAll: true,
     });
 
     const url: string = 'https://mocki.io/v1/a686afea-bc6c-4b91-9a4e-0b9d52b9e5fb';
@@ -25,7 +27,10 @@ export const GetTrainers = () => {
     return (
         <>
             <SearchTrainer filter = {filter} setFilter = {setFilter} />
-            <AllTrainers trainers = {trainers} filter = {filter} />
+            <div className="allTrainers">
+                <AllTrainers trainers = {trainers} filter = {filter} />
+            </div>
+
         </>
 
     )}
