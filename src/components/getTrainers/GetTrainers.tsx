@@ -1,16 +1,16 @@
 import {useState, useEffect} from "react";
-import {AllTrainers} from './AllTrainers.tsx'
-import {IFilter, SearchTrainer} from "./SearchTrainer.tsx";
-import {ITrainer} from './AllTrainers.tsx';
-import './trainers_list.scss';
+import {AllTrainers} from '../allTrainers/AllTrainers.tsx'
+import {IFilter, SearchTrainer} from "../searchTrainers/SearchTrainer.tsx";
+import {ITrainer} from '../allTrainers/AllTrainers.tsx';
+import '../trainers_list.scss';
 
 export const GetTrainers = () => {
     const [trainers, setTrainers] = useState<ITrainer[]>([]);
     const [filter, setFilter] = useState<IFilter>({
             trainerName: '',
-            isActive: false,
-            forMan: false,
-            forWoman: false,
+            isActive: true,
+            forMan: true,
+            forWoman: true,
             showAll: true,
     });
 

@@ -1,5 +1,5 @@
-import {IFilter} from "./SearchTrainer.tsx";
-import './trainers_list.scss';
+import {IFilter} from "../searchTrainers/SearchTrainer.tsx";
+import '../trainers_list.scss';
 
 export interface ITrainer {
     id: number,
@@ -18,7 +18,13 @@ interface IProps {
 
 export const AllTrainers = ({trainers, filter}: IProps) => {
 
-    const filteredTrainers =  (filter.showAll === true ? trainers : (trainers.filter((item: ITrainer) => (item.forWoman === filter.forWoman) && (item.forMan === filter.forMan) && (item.isActive === filter.isActive) && (item.name.toLowerCase().includes(filter.trainerName.toLowerCase()) )) ))
+    const filteredTrainers =  (filter.showAll ? trainers : (trainers.filter((item: ITrainer) =>
+        (item.forWoman === filter.forWoman)
+        && (item.forMan === filter.forMan)
+        && (item.isActive === filter.isActive)
+        && (item.name.toLowerCase().includes(filter.trainerName.toLowerCase()) )) ))
+
+
 
     if (filteredTrainers.length === 0) return (<p>По вашему запросу ничго не найдено</p>)
 
