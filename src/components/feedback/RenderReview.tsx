@@ -3,7 +3,7 @@ import {useDispatch } from 'react-redux';
 import { commentDelete } from '../../store/actions.ts';
 import {IComment} from "../../store/commentsReducer.ts";
 
-function RenderComment({ data }: { data: IComment[] }) {
+function RenderComment({ data }: any) {
 
     const dispatch = useDispatch();
 

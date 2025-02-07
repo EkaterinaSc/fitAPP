@@ -23,7 +23,6 @@ const Feedback = () => {
             const id = Date.now();
             dispatch(commentCreate(id, comment));
             setComment("");
-            console.log('comments:', comments);
         }
     };
 
