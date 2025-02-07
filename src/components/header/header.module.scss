@@ -2,8 +2,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  max-width: 1440px;
-  margin: 30px auto;
+  width: 100%;
+  padding: 0 30px;
+  box-sizing: border-box;
 }
 
 .logo {
@@ -34,11 +35,25 @@
   flex-wrap: wrap;
 }
 
+.ul {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  gap: 20px
+}
+
 .navItem {
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 16px;
+}
+
+.navItem a {
+  display: flex;
+  align-items: center;
 }
 
 .navItem img {

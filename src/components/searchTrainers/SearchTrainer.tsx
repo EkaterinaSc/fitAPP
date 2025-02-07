@@ -24,7 +24,7 @@ export const SearchTrainer = ({filter, setFilter} : IProps ) => {
             <form className='search'>
                 <div className="form-group">
                     <div className="input-group">
-                        <label htmlFor="name">Имя</label>
+                        <label htmlFor="name">Имя тренера </label>
                         <input type="text" name='name' value={filter.trainerName}
                                onChange={(e) => setFilter({...filter, trainerName: e.target.value, showAll: false})}/>
                     </div>

@@ -1,0 +1,26 @@
+.cardComments{
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  flex-direction: column;
+  width: 100%;
+}
+
+.commentsItemCreate{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 30px;
+}
+
+.comm {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-bottom: 30px;
+  border-bottom: #535bf2 1px solid;
+}

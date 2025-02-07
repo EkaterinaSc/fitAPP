@@ -1,40 +1,37 @@
-import { useState, useEffect } from 'react';
-import {useDispatch, useSelector} from 'react-redux';
+import styles from './feedback.module.scss'
+import {useDispatch } from 'react-redux';
 import { commentDelete } from '../../store/actions.ts';
 import {IComment} from "../../store/commentsReducer.ts";
-import {RootState} from "../../store/store.ts";
 
-function RenderComment({ data }: { data: IComment }) {
+function RenderComment({ data }: { data: IComment[] }) {
 
-    /*const comments = useSelector((state: RootState) => state.comments || []);
-    const [commentText, setCommentText] = useState('');
-    const { text, id } = comments;
-    */
     const dispatch = useDispatch();
 
-    const handleDelete = (e) => {
+    const handleDelete = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
-        dispatch(commentDelete(data.id));
-    }
+        const id = Number(e.currentTarget.getAttribute("data-id"));
+        console.log(id);
+        dispatch(commentDelete(id));
+        console.log('comments:', data);
+    };
 
-    /* useEffect(() => {
-        if (text) {
-            setCommentText(text);
-        }
-    }, [text]);
-
-     */
-
-    if (data) {
-        return (
-            <div key={data.id}>
-                <button onClick={handleDelete}>Удалить</button>
-                <p>{data.text}</p>
-            </div>
+    const mappedComments = data?.comments.map((comment: IComment) => (
+        <div className={styles.comm} key={comment.id}>
+            <button data-id={comment.id} onClick={(e) => handleDelete(e)}>Удалить</button>
+            <p>{comment.text}</p>
+        </div>
         )
-    }
-
-
+    )
+       return (
+           <>
+               {!mappedComments && (
+                   <div>
+                       <p>No comments yet</p>
+                   </div>
+               )}
+               {mappedComments && (mappedComments)}
+           </>
+       )
 }
 
-export default RenderComment;
+export default RenderComment

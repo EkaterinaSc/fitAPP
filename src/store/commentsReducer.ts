@@ -1,4 +1,4 @@
-import { COMMENT_CREATE, COMMENT_DELETE, COMMENT_LOAD} from "./types.ts";
+import { COMMENT_CREATE, COMMENT_DELETE } from "./types.ts";
 
 export interface IComment {
     id: number;
@@ -9,7 +9,7 @@ const initialState: { comments: IComment[] } = {
     comments: [],
 }
 
-export const commentsReducer = (state = initialState, action) => {
+export const commentsReducer = (state = initialState, action: any) => {
     switch (action.type) {
         case COMMENT_CREATE:
             return {
@@ -18,35 +18,12 @@ export const commentsReducer = (state = initialState, action) => {
             };
 
         case COMMENT_DELETE:
-            return (() => {
-                const { id } = action;
-                const { comments } = state;
-                const itemIndex = comments.findIndex(res  => res.id === id);
-
-                const nextComments = [
-                    ...comments.slice(0, itemIndex),
-                    ...comments.slice(itemIndex + 1)
-                ];
-
-                return {
-                    ...state,
-                    comments: nextComments
-                }
-            })();
-
-        /*case COMMENT_LOAD:
-            const commentsNew = action.data.map((res: { text: any; id: any; }) => {
-                return {
-                    text: res.text,
-                    id: res.id,
-                }
-            })
-
+            const visComments = state.comments.filter(comment => comment.id !== action.data.id);
             return {
                 ...state,
-                comments: commentsNew
-            }
-*/
+                comments: visComments // Просто фильтруем
+            };
+
         default:
             return state;
 
