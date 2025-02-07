@@ -6,7 +6,7 @@ import { Header } from "./components/header/Header.tsx";
 import { store } from "./store/store.ts";
 import { Provider } from "react-redux";
 import Feedback from './components/feedback/Feedback.tsx';
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 
 createRoot(document.getElementById('root')!).render(
     <StrictMode>
